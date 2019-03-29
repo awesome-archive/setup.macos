@@ -28,49 +28,51 @@ guest_iso = case RUBY_PLATFORM
 
 
 Vagrant.configure('2') do |config|
-  config.vm.box = 'ashiq/osx-10.14'
+  config.vm.box = 'yzgyyang/macOS-10.14'
   config.vm.box_check_update = true
   config.vm.provider 'virtualbox' do |vb|
     vb.gui = true
     vb.cpus = 2
     vb.linked_clone = true
     vb.name = 'macOS'
-    vb.memory = '4096'
+    vb.memory = '5120'
     vb.customize [
       'modifyvm', :id,
-      '--accelerate2dvideo', 'on',
-      '--accelerate3d', 'on',
-      '--acpi', 'on',
-      '--apic', 'on',
+      # '--accelerate2dvideo', 'on', # 🌟 default: off
+      '--accelerate3d', 'on', # default: off
+      '--acpi', 'on', # default: on
+      '--apic', 'on', # default: on
       '--audio', audio_driver,
-      '--audiocontroller', 'hda',
-      # '--biosapic', 'apic',
+      '--audiocontroller', 'hda', # default ac97
+      '--biosapic', 'x2apic', # default: apic
+      '--bioslogofadein', 'on',
       '--bioslogofadeout', 'on',
-      # '--chipset', 'ich9',
-      '--clipboard', 'bidirectional',
-      '--draganddrop', 'bidirectional',
-      # '--firmware', 'efi64',
-      # '--graphicscontroller', 'vboxsvga',
-      # '--hpet', 'on',
-      # '--hwvirtex', 'on',
-      # '--ioapic', 'on',
-      # '--keyboard', 'usb',
-      # '--largepages', 'on',
-      # '--longmode', 'on',
-      # '--mouse', 'usb',
-      # '--nestedpaging', 'on',
-      # '--pae', 'on',
-      # '--paravirtprovider', 'default',
-      # '--usb', 'on',
-      # '--usbxhci', 'on',
-      # '--vram', '128',
-      # '--vtxvpid', 'on',
-      # '--vtxux', 'on',
-      # '--x2apic', 'on',
+      '--chipset', 'ich9', # default: ich9
+      '--clipboard', 'bidirectional', # default: disabled
+      '--draganddrop', 'bidirectional', # default: disabled
+      '--firmware', 'efi64', # default: efi
+      # '--graphicscontroller', 'vboxsvga', # 🌟 default: vboxvga
+      '--hpet', 'on', # default: off
+      '--hwvirtex', 'on', # default: on
+      '--ioapic', 'on', # default: on
+      '--keyboard', 'usb', # default: usb
+      '--largepages', 'on', # default: on
+      '--longmode', 'on', # default: on
+      '--mouse', 'usb',
+      '--nestedpaging', 'on', # default: on
+      '--nested-hw-virt', 'on', # 🌟 default: off
+      '--pae', 'on', # default: on
+      '--paravirtprovider', 'minimal', # default: default
+      '--rtcuseutc', 'off', # default: on
+      '--usbxhci', 'on', # default: on
+      '--vram', '128', # default: 128
+      '--vtxvpid', 'on', # default: on
+      '--vtxux', 'on', # default: on
+      '--x2apic', 'on', # default: off
     ]
     vb.customize [
       'storageattach', :id,
-      '--storagectl', 'SATA',
+      '--storagectl', 'SATA Controller',
       '--port', '2',
       '--type', 'dvddrive',
       '--medium', guest_iso

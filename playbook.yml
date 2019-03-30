@@ -1,0 +1,11 @@
+---
+- name: Setup macOS for development environment.
+  hosts: all
+  connection: local
+  # vars_prompt:
+  #   - name: computername
+  #     prompt: Please set the local host name of this Mac.
+  #     default: mac
+  #     private: no
+  roles:
+    - pre-setup

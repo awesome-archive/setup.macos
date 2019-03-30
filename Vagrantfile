@@ -38,7 +38,6 @@ Vagrant.configure('2') do |config|
     vb.memory = '5120'
     vb.customize [
       'modifyvm', :id,
-      # '--accelerate2dvideo', 'on', # 🌟 default: off
       '--accelerate3d', 'on', # default: off
       '--acpi', 'on', # default: on
       '--apic', 'on', # default: on
@@ -51,16 +50,14 @@ Vagrant.configure('2') do |config|
       '--clipboard', 'bidirectional', # default: disabled
       '--draganddrop', 'bidirectional', # default: disabled
       '--firmware', 'efi64', # default: efi
-      # '--graphicscontroller', 'vboxsvga', # 🌟 default: vboxvga
       '--hpet', 'on', # default: off
       '--hwvirtex', 'on', # default: on
       '--ioapic', 'on', # default: on
       '--keyboard', 'usb', # default: usb
       '--largepages', 'on', # default: on
       '--longmode', 'on', # default: on
-      '--mouse', 'usb',
+      # '--mouse', 'usb',
       '--nestedpaging', 'on', # default: on
-      '--nested-hw-virt', 'on', # 🌟 default: off
       '--pae', 'on', # default: on
       '--paravirtprovider', 'minimal', # default: default
       '--rtcuseutc', 'off', # default: on
@@ -79,4 +76,8 @@ Vagrant.configure('2') do |config|
     ]
   end
   config.vm.synced_folder '.', '/vagrant', type: 'rsync', owner: 'vagrant', group: 'staff'
+  config.vm.provision 'Allow all applications to run', type: 'shell', inline: 'spctl --master-disable'
+  config.vm.provision 'Install VBGuest addons', type: 'shell', inline: 'cd /Volumes/VBox_GAs_*; installer -pkg VBoxDarwinAdditions.pkg -target /'
+  config.vm.provision 'Restore the allow all applications to run', type: 'shell', inline: 'spctl --master-enable'
+  config.vm.provision 'Start setup', type: 'shell', inline: '/vagrant/setup'
 end

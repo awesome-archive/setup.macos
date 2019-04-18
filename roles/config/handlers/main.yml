@@ -1,0 +1,4 @@
+- name: Reboot OS
+  reboot:
+- name: Reload sshd
+  import_tasks: _ssh.yml

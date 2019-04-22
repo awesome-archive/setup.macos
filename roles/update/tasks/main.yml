@@ -1,0 +1,21 @@
+- name: Start system updates
+  shell: softwareupdate --install --all
+  become: true
+  register: softwareupdate
+  changed_when: '"No updates are available." not in softwareupdate.stderr'
+  notify: Reboot OS
+
+- name: Whether required reboot
+  stat:
+    path: /tmp/.setup.macos.reboot
+  register: reboot
+
+- name: Remove a restart flag
+  file:
+    path: /tmp/.setup.macos.reboot
+    state: absent
+  notify: Reboot OS
+  when: reboot.stat.exists
+
+- name: Flush
+  meta: flush_handlers

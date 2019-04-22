@@ -1,0 +1,5 @@
+- name: Set a restart flag and schedule a restart
+  file:
+    path: /tmp/.setup.macos.reboot
+    state: touch
+    mode: 0666

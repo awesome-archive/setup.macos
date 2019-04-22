@@ -1,0 +1,4 @@
+- name: Schedule system updates regularly
+  shell: softwareupdate --schedule on
+  become: true
+  changed_when: false

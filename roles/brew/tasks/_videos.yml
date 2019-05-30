@@ -1,0 +1,14 @@
+- name: Install the OBS
+  homebrew_cask:
+    name: obs
+    state: present
+
+- name: Install the duet
+  homebrew_cask:
+    name: duet
+    state: present
+
+- name: Install the SoundFlower
+  homebrew_cask:
+    name: soundflower
+    state: present

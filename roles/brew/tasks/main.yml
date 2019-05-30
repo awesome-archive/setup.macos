@@ -16,6 +16,11 @@
     upgrade_all: yes
 
 - import_tasks: _browsers.yml
+- import_tasks: _clouds.yml
+- import_tasks: _creative.yml
+- import_tasks: _games.yml
+- import_tasks: _messaging.yml
+- import_tasks: _videos.yml
 
 - name: Restore the Gatekeeper
   shell: spctl --master-enable

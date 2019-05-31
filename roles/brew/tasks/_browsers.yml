@@ -1,10 +1,10 @@
 ---
-- name: Install Firefox from Homebrew cask.
+- name: Install the Firefox
   homebrew_cask:
     name: firefox
     state: present
 
-- name: Install Chrome from Homebrew cask.
+- name: Install the Chrome
   homebrew_cask:
     name: google-chrome
     state: present

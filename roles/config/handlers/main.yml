@@ -1,5 +1,5 @@
 - name: Reboot OS
-  import_tasks: ../../_coomon/handler/reboot.yml
+  import_tasks: ../_common/handlers/reboot.yml
 
 - name: Reload sshd
-  import_tasks: _ssh.yml
+  import_tasks: ./handlers/_sshd.yml

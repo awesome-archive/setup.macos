@@ -1,6 +1,6 @@
 - name: Create a .ssh folder
   file:
-    path: ~/.ssh
+    path: "{{ ansible_env.HOME }}/.ssh"
     state: directory
     mode: 0700
 

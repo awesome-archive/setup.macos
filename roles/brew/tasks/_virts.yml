@@ -1,0 +1,49 @@
+- name: Install the Docker
+  homebrew_cask:
+    name: docker
+    state: present
+
+- name: Install the Vagrant
+  homebrew_cask:
+    name: vagrant
+    state: present
+
+- name: Install the Virtualbox
+  homebrew_cask:
+    name: virtualbox
+    state: present
+
+- name: Install the Extension pack for Virtualbox
+  homebrew_cask:
+    name: virtualbox-extension-pack
+    state: present
+
+- name: Install the CLI for Wercker
+  homebrew_cask:
+    name: wercker-cli
+    state: present
+
+- name: Install the Docker completions for Bash
+  homebrew:
+    name: docker-completion
+    state: present
+
+- name: Install the Docker compose completions for Bash
+  homebrew:
+    name: docker-compose-completion
+    state: present
+
+- name: Install the Vagrant completions for Bash
+  homebrew:
+    name: vagrant-completion
+    state: present
+
+- name: Set the Virtualization utils completion to .bash_profile
+  lineinfile:
+    dest: ~/.bash_profile
+    regexp: "bash_completion.d\/{{ item }}$"
+    line: "source /usr/local/etc/bash_completion.d/{{ item }}"
+  with_items:
+  - docker
+  - docker-compose
+  - vagrant

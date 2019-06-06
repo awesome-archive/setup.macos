@@ -1,4 +1,8 @@
----
+- name: Install the Links
+  homebrew:
+    name: links
+    state: present
+
 - name: Install the Firefox
   homebrew_cask:
     name: firefox

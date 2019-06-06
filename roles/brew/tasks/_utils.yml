@@ -1,0 +1,64 @@
+- name: Install the Bash
+  homebrew:
+    name: bash
+    state: present
+
+- name: Install the JQ
+  homebrew:
+    name: jq
+    state: present
+
+- name: Install the Mackup
+  homebrew:
+    name: mackup
+    state: present
+
+- name: Install the p7zip
+  homebrew:
+    name: p7zip
+    state: present
+
+- name: Install the rsync
+  homebrew:
+    name: rsync
+    state: present
+
+- name: Install the UnRAR
+  homebrew:
+    name: unrar
+    state: present
+
+- name: Install the Amorphous DiskMark
+  homebrew_cask:
+    name: amorphousdiskmark
+    state: present
+
+- name: Install the NoSleep
+  homebrew_cask:
+    name: nosleep
+    state: present
+
+- name: Install the Bash completions for Bash
+  homebrew:
+    name: bash-completion@2
+    state: present
+
+- name: Install the LaunchCtl completions for Bash
+  homebrew:
+    name: launchctl-completion
+    state: present
+
+- name: Install the Open completions for Bash
+  homebrew:
+    name: open-completion
+    state: present
+
+- name: Set the utils completion to .bash_profile
+  lineinfile:
+    dest: ~/.bash_profile
+    regexp: "bash_completion.d\/{{ item }}$"
+    line: "source /usr/local/etc/bash_completion.d/{{ item }}"
+  with_items:
+  - brew
+  - launchctl
+  - open

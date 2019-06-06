@@ -1,0 +1,34 @@
+- name: Install the Git
+  homebrew:
+    name: git
+    state: present
+
+- name: Install the Gist
+  homebrew:
+    name: gist
+    state: present
+
+- name: Install the Subversion
+  homebrew:
+    name: subversion
+    state: present
+
+- name: Install the telnet
+  homebrew:
+    name: telnet
+    state: present
+
+- name: Install the wget
+  homebrew:
+    name: wget
+    state: present
+
+- name: Set the terms utils completion to .bash_profile
+  lineinfile:
+    dest: ~/.bash_profile
+    regexp: "bash_completion.d\/{{ item }}$"
+    line: "source /usr/local/etc/bash_completion.d/{{ item }}"
+  with_items:
+  - git-completion.bash
+  - git-prompt.sh
+  - subversion

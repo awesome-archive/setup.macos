@@ -8,6 +8,11 @@
     name: duet
     state: present
 
+- name: Install the Vysor
+  homebrew_cask:
+    name: vysor
+    state: present
+
 - name: Install the SoundFlower
   homebrew_cask:
     name: soundflower

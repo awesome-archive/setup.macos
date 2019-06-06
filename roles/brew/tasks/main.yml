@@ -9,22 +9,32 @@
 - name: Disable the Gatekeeper
   shell: spctl --master-disable
   become: true
+  changed_when: false
 
 - name: Upgrade brew.
   homebrew:
     update_homebrew: yes
     upgrade_all: yes
 
+- import_tasks: __shell.yml
+- import_tasks: _auth.yml
 - import_tasks: _browsers.yml
 - import_tasks: _clouds.yml
 - import_tasks: _creative.yml
+- import_tasks: _dev.yml
+- import_tasks: _editors.yml
 - import_tasks: _games.yml
-- import_tasks: _messaging.yml
+- import_tasks: _messages.yml
+- import_tasks: _terms.yml
+- import_tasks: _unity.yml
+- import_tasks: _utils.yml
 - import_tasks: _videos.yml
+- import_tasks: _virts.yml
 
 - name: Restore the Gatekeeper
   shell: spctl --master-enable
   become: true
+  changed_when: false
 
 - name: Lock sudo
   lineinfile:

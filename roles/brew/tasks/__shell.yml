@@ -8,6 +8,13 @@
     name: zsh-completion
     state: present
 
+- name: Accept zsh as a login shell
+  lineinfile:
+    dest: /etc/shells
+    regexp: \/usr\/local\/bin\/zsh
+    line: /usr/local/bin/zsh
+  become: yes
+
 - name: Change the default shell to zsh
   command: chsh -s /usr/local/bin/zsh
   become: yes

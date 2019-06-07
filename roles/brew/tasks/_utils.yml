@@ -37,23 +37,3 @@
   homebrew_cask:
     name: nosleep
     state: present
-
-- name: Install the LaunchCtl completions for Bash
-  homebrew:
-    name: launchctl-completion
-    state: present
-
-- name: Install the Open completions for Bash
-  homebrew:
-    name: open-completion
-    state: present
-
-- name: Set the utils completion to .bash_profile
-  lineinfile:
-    dest: ~/.zsh.d/completion
-    regexp: "bash_completion.d\/{{ item }}$"
-    line: "source /usr/local/etc/bash_completion.d/{{ item }}"
-  with_items:
-    - brew
-    - launchctl
-    - open

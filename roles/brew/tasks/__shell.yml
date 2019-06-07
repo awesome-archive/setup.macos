@@ -47,7 +47,7 @@
     path: "{{ ansible_env.HOME }}/.zsh.d"
     state: directory
 
-- name: Touch a settings for completion
+- name: Touch a dummy settings
   file:
-    path: ~/.zsh.d/completion
+    path: ~/.zsh.d/.keep
     state: touch

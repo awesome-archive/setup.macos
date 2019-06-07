@@ -27,12 +27,11 @@
   homebrew_cask:
     name: visual-studio
     state: present
-
 - name: Set the dev utils completion to .bash_profile
   lineinfile:
-    dest: ~/.bash_profile
+    dest: ~/.zsh.d/completion
     regexp: "bash_completion.d\/{{ item }}$"
     line: "source /usr/local/etc/bash_completion.d/{{ item }}"
   with_items:
-  - aws_bash_completer
-  - nvm
+    - aws_bash_completer
+    - nvm

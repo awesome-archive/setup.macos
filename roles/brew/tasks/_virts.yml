@@ -40,10 +40,10 @@
 
 - name: Set the Virtualization utils completion to .bash_profile
   lineinfile:
-    dest: ~/.bash_profile
+    dest: ~/.zsh.d/completion
     regexp: "bash_completion.d\/{{ item }}$"
     line: "source /usr/local/etc/bash_completion.d/{{ item }}"
   with_items:
-  - docker
-  - docker-compose
-  - vagrant
+    - docker
+    - docker-compose
+    - vagrant

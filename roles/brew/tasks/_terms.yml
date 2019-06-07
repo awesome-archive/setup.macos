@@ -30,7 +30,7 @@
 
 - name: Set the terms utils completion to .bash_profile
   lineinfile:
-    dest: ~/.bash_profile
+    dest: ~/.zsh.d/completion
     regexp: "bash_completion.d\/{{ item }}$"
     line: "source /usr/local/etc/bash_completion.d/{{ item }}"
   with_items:

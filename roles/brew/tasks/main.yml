@@ -17,6 +17,7 @@
     upgrade_all: yes
 
 - import_tasks: __shell.yml
+- import_tasks: _anyenv.yml
 - import_tasks: _auth.yml
 - import_tasks: _browsers.yml
 - import_tasks: _clouds.yml

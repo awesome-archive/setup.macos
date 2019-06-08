@@ -8,11 +8,6 @@
     name: awscli
     state: present
 
-- name: Install the NVM
-  homebrew:
-    name: nvm
-    state: present
-
 - name: Install the .NET Core
   homebrew_cask:
     name: dotnet-sdk

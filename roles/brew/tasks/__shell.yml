@@ -49,5 +49,5 @@
 
 - name: Touch a dummy settings
   file:
-    path: ~/.zsh.d/.keep
+    path: ~/.zsh.d/keep
     state: touch

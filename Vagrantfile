@@ -35,7 +35,7 @@ Vagrant.configure('2') do |config|
     vb.cpus = 2
     vb.linked_clone = true
     vb.name = 'macOS'
-    vb.memory = '5120'
+    vb.memory = '6144'
     vb.customize [
       'modifyvm', :id,
       '--accelerate3d', 'on', # default: off

@@ -56,7 +56,6 @@ Vagrant.configure('2') do |config|
       '--keyboard', 'usb', # default: usb
       '--largepages', 'on', # default: on
       '--longmode', 'on', # default: on
-      # '--mouse', 'usb',
       '--nestedpaging', 'on', # default: on
       '--pae', 'on', # default: on
       '--paravirtprovider', 'minimal', # default: default
@@ -79,5 +78,5 @@ Vagrant.configure('2') do |config|
   config.vm.provision 'Allow all applications to run', type: 'shell', inline: 'spctl --master-disable'
   config.vm.provision 'Install VBGuest addons', type: 'shell', inline: 'cd /Volumes/VBox_GAs_*; installer -pkg VBoxDarwinAdditions.pkg -target /'
   config.vm.provision 'Restore the allow all applications to run', type: 'shell', inline: 'spctl --master-enable'
-  config.vm.provision 'Start setup', type: 'shell', inline: '/vagrant/setup'
+  # config.vm.provision 'Start setup', type: 'shell', inline: '/vagrant/setup'
 end

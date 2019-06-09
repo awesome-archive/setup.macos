@@ -1,4 +1,4 @@
-# App Store: Slack
+# App Store: LINE, Slack
 
 - name: Install the Discord
   homebrew_cask:

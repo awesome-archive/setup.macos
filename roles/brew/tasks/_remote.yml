@@ -27,3 +27,13 @@
   homebrew_cask:
     name: cocoarestclient
     state: present
+
+- name: Install the duet
+  homebrew_cask:
+    name: duet
+    state: present
+
+- name: Install the Vysor
+  homebrew_cask:
+    name: vysor
+    state: present

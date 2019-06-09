@@ -1,16 +1,16 @@
-- name: Install the OBS
+- name: Install the Amorphous DiskMark
   homebrew_cask:
-    name: obs
+    name: amorphousdiskmark
     state: present
 
-- name: Install the duet
+- name: Install the Drobo dashboard
   homebrew_cask:
-    name: duet
+    name: homebrew/cask-drivers/drobo-dashboard
     state: present
 
-- name: Install the Vysor
+- name: Install the NoSleep
   homebrew_cask:
-    name: vysor
+    name: nosleep
     state: present
 
 - name: Install the SoundFlower

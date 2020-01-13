@@ -1,0 +1,15 @@
+- name: Deploy the npm settings
+  template:
+    src: npm
+    dest: "{{ ansible_env.HOME }}/.zsh.d/npm"
+
+- name: Install the node.js package globally
+  npm:
+    name: "{{ item }}"
+    global: yes
+  with_items:
+    - "@aws-amplify/cli"
+    - "@google/clasp"
+    - exp
+    - serverless
+    - yarn

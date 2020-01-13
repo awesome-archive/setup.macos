@@ -1,24 +1,35 @@
-- name: Install the Android Studio
-  homebrew_cask:
-    name: android-studio
+- name: Install the CLI for Web develop
+  homebrew:
+    name:
+      - mkcert
+      - nss
     state: present
 
 - name: Install the CLI for AWS
   homebrew:
-    name: awscli
+    name:
+      - awscli
+      - czmq
+      - pkg-config
+      - zmqpp
     state: present
 
-- name: Install the .NET Core
+- name: Install the Powershell Core
   homebrew_cask:
-    name: dotnet-sdk
+    accept_external_apps: true
+    name: "{{ item }}"
     state: present
+  with_items:
+    - dotnet-sdk
+    - powershell
 
-- name: Install the PowerShell Core
+- name: Install the Develop environment for mobile app
   homebrew_cask:
-    name: powershell
+    accept_external_apps: true
+    name: "{{ item }}"
     state: present
-
-- name: Install the Visual Studio
-  homebrew_cask:
-    name: visual-studio
-    state: present
+  with_items:
+    - adoptopenjdk
+    - android-studio
+    - unity-hub
+    - visual-studio

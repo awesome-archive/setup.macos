@@ -1,6 +1,8 @@
----
 - name: Setup macOS for development environment.
   hosts: all
   connection: local
   roles:
     - brew
+    - config
+    - patch
+    - teardown

@@ -1,11 +1,9 @@
 - name: Install the zsh
   homebrew:
-    name: zsh
-    state: present
-
-- name: Install the zsh-completion
-  homebrew:
-    name: zsh-completion
+    name:
+      - gcc # using for zsh-completion
+      - zsh
+      - zsh-completion
     state: present
 
 - name: Accept zsh as a login shell
@@ -47,7 +45,7 @@
     path: "{{ ansible_env.HOME }}/.zsh.d"
     state: directory
 
-- name: Touch a dummy settings
-  file:
-    path: ~/.zsh.d/keep
-    state: touch
+- name: Deploy a dummy setting
+  template:
+    src: zsh.d-keep
+    dest: "{{ ansible_env.HOME }}/.zsh.d/keep"

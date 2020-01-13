@@ -1,24 +1,42 @@
+- name: Install the Virtualization tools
+  homebrew_cask:
+    accept_external_apps: true
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - parallels
+    - virtualbox
+    - virtualbox-extension-pack
+    - vagrant
+
+- name: Collect the plugins of Vagrant
+  shell: "vagrant plugin list | awk '{ print $1 }'"
+  register: vagrant_plugins
+  changed_when: false
+
+- name: Install the plugins of Vagrant
+  shell: "vagrant plugin install {{ item }}"
+  with_items:
+    - vagrant-parallels
+    - vagrant-reload
+    - vagrant-vbguest
+  when: item not in vagrant_plugins.stdout_lines
+
 - name: Install the Docker
   homebrew_cask:
+    accept_external_apps: true
     name: docker
     state: present
 
-- name: Install the Vagrant
-  homebrew_cask:
-    name: vagrant
+- name: Install the CLI for CI
+  homebrew:
+    name:
+      - circleci
+      - nektos/tap/act
     state: present
 
-- name: Install the Virtualbox
+- name: Install the Wercker
   homebrew_cask:
-    name: virtualbox
-    state: present
-
-- name: Install the Extension pack for Virtualbox
-  homebrew_cask:
-    name: virtualbox-extension-pack
-    state: present
-
-- name: Install the CLI for Wercker
-  homebrew_cask:
+    accept_external_apps: true
     name: wercker-cli
     state: present
